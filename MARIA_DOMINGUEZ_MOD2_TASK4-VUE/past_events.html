@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="shortcut icon" href="./assets/img/favIcon.png" type="image/x-icon">
+    <title>Past Events | AE</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header>
+        <div class="top">
+            <a href="./index.html"><img class="logo" src="./assets/img/Logo-Amazing-Events.png" alt="logo"></a>
+
+            <div>
+                <nav class="navbar navbar-expand-lg bg-transparent">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./index.html">Home</a>
+                                <a class="nav-link boton_nav border mx-1" aria-current="page" href="./upcoming_events.html">Upcoming Events</a>
+                                <a class="nav-link boton_nav active border mx-1" aria-current="page" href="#">Past Events</a>
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./contact.html">Contact</a>
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./stats.html">Stats</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="titulo">
+            <a class="none" href="./upcoming_events.html"><img class="arrow" src="./assets/img/back.png" alt=""></a>
+            <h1>Past Events</h1>
+            <a class="none" href="./contact.html"><img class="arrow" src="./assets/img/forward.png" alt=""></a>
+        </div>
+    </header>
+    <main>
+        <div id="app">
+            {{filtroDoblePasado}} 
+            <form id="search" action="">
+                <fieldset>
+                    <div class="input" id="check_box">
+                        <div v-for="categoria of categorias">
+                            <input v-model="filtroCheck" :value="categoria" type="checkbox" :name="categoria" :id="categoria">
+                            <label :for="categoria">{{categoria}}</label>
+                        </div>
+                    </div>
+                    <div class="search">
+                        <input v-model="textoBuscar" class="medida_input medida-xs" type="search" id="input-busqueda">
+                        <button class="submit_search" type="submit" @click.prevent><img class="submit_search"
+                                src="./assets/img/search.png" alt="search"></button>
+                    </div>
+                </fieldset>
+            </form>
+
+            <div id="contenedor">
+                <section class="section" v-for="evento in eventosPasados">
+                    <img class="img" :src="evento.image" :alt="evento.name">
+                    <h2>{{evento.name}}</h2>
+                    <p>{{evento.description}}</p>
+                    <div class="precio">
+                        <p>${{evento.price}}</p>
+                        <a class="ver_mas" :href="'./details.html?id='+evento._id">See more</a>
+                    </div>
+                </section>
+                <h2 v-show="eventosPasados.length == 0" class="p-3">There are no events for the search entered. Please enter another search, or use the filters by category.</h2>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <a class="none" href="http://www.instagram.com"><img class="rrss" src="./assets/img/instagram.png"
+                    alt=""></a>
+            <a class="none" href="http://www.facebook.com"><img class="rrss" src="./assets/img/facebook.png" alt=""></a>
+            <a class="none" href="http://www.whatsapp.com"><img class="rrss" src="./assets/img/whatsapp.png" alt=""></a>
+        </div>
+        <p>Cohort 34</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+        <script src="https://unpkg.com/vue@3"></script>
+
+        <script src="./js/data.js"></script>
+        <script src="./js/vueMain.js"></script>
+</body>
+
+</html>

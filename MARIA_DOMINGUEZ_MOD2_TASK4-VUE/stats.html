@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./assets/style/style.css">
+    <link rel="shortcut icon" href="./assets/img/favIcon.png" type="image/x-icon">
+    <title>Stats | AE</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+</head>
+
+<body>
+    <header>
+        <div class="top">
+            <a href="./index.html"><img class="logo" src="./assets/img/Logo-Amazing-Events.png" alt="logo"></a>
+
+            <div>
+                <nav class="navbar navbar-expand-lg bg-transparent">
+                    <div class="container-fluid">
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                            <div class="navbar-nav">
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./index.html">Home</a>
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./upcoming_events.html">Upcoming Events</a>
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./past_events.html">Past Events</a>
+                                <a class="nav-link boton_nav border mx-1" aria-current="page"
+                                    href="./contact.html">Contact</a>
+                                <a class="nav-link boton_nav active border mx-1" aria-current="page" href="#">Stats</a>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <div class="titulo">
+            <a class="none" href="./contact.html"><img class="arrow" src="./assets/img/back.png" alt=""></a>
+            <h1>Stats</h1>
+            <a class="none" href="./index.html"><img class="arrow" src="./assets/img/forward.png" alt=""></a>
+        </div>
+    </header>
+    <main>
+        <div id="app">
+            <div class="stats_table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="3">Events Statistics</th>
+                        </tr>
+                        <tr>
+                            <th>Events with the highest percentage of attendance</th>
+                            <th>Events with the lowest percentage of attendance</th>
+                            <th>Event with larger capacity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr id="events" >
+                            <td>{{ altaAsistencia(eventosPasados) }}</td>
+                            <td>{{ bajaAsistencia(eventosPasados) }}</td>
+                            <td>{{ capacidadMaxima(eventos) }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="3">Upcoming events statistics by category</th>
+                        </tr>
+                        <tr>
+                            <th>Categories</th>
+                            <th>Revenues (Estimated)</th>
+                            <th>Percentage of attendance (Estimated)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="upcoming" v-for="evento in crearArrayTabla(eventosFuturos)">
+                        <td>{{ evento.categoria }}</td>
+                        <td>$ {{ evento.gananciasTotales }}</td>
+                        <td>{{ evento.porcentajeTotal.toFixed(2) }}%</td>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th colspan="3"> Past Events statistic by category</th>
+                        </tr>
+                        <tr>
+                            <th>Categories</th>
+                            <th>Revenues</th>
+                            <th>Percentage of attendance</th>
+                        </tr>
+                    </thead>
+                    <tbody id="Past" v-for="evento in crearArrayTabla(eventosPasados)">
+                        <td>{{ evento.categoria }}</td>
+                        <td>$ {{ evento.gananciasTotales }}</td>
+                        <td>{{ evento.porcentajeTotal.toFixed(2) }}%</td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div>
+            <a class="none" href="http://www.instagram.com"><img class="rrss" src="./assets/img/instagram.png"
+                    alt=""></a>
+            <a class="none" href="http://www.facebook.com"><img class="rrss" src="./assets/img/facebook.png" alt=""></a>
+            <a class="none" href="http://www.whatsapp.com"><img class="rrss" src="./assets/img/whatsapp.png" alt=""></a>
+        </div>
+        <p>Cohort 34</p>
+    </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+        crossorigin="anonymous"></script>
+
+    <script src="https://unpkg.com/vue@3"></script>
+
+    <script src="./js/data.js"></script>
+    <script src="./js/vueMain.js"></script>
+</body>
+
+</html>
