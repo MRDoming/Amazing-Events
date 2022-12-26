@@ -8,3 +8,11 @@ Se trata de una página con ofertas de eventos, cuenta con una pagina principal 
 
 
 Cuenta con filtros por categoria y por palabra clave
+
+ ![inicio](https://raw.githubusercontent.com/MRDoming/Amazing-Events/main/MARIA_DOMINGUEZ_MOD2_TASK4-VUE/assets/img/a-filtros.png)
+ 
+Y con una pagina con las estadisticas de todos los eventos: 
+
+ ![inicio](https://raw.githubusercontent.com/MRDoming/Amazing-Events/main/MARIA_DOMINGUEZ_MOD2_TASK4-VUE/assets/img/a-stats.png)
+
+
